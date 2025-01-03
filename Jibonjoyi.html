@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tree UI</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%; /* Aspect ratio: 16:9 or adjust as needed */
+            background: url('1.jpg') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .tree {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .label {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10%; /* Relative width */
+            height: 5%; /* Relative height */
+            background-color: transparent;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2vw; /* Font size relative to viewport width */
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            color: #000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .label:hover {
+            transform: scale(1.1);
+        }
+
+        /* Labels positioned directly on the books */
+        .label-2 { top: 64%; left: 60%; } /* ধর্ম */
+        .label-3 { top: 46%; left: 22%; } /* কৃষিমূলক */
+        .label-4 { top: 59%; left: 31%; } /* সাহিত্য */
+        .label-5 { top: 56%; left: 72%; } /* বিজ্ঞান */
+        .label-6 { top: 39%; left: 5%; } /* দর্শন */
+        .label-7 { top: 55%; left: 13%; } /* অর্থনীতি */
+        .label-8 { top: 42%; left: 53%; } /* রাজনীতি */
+        .label-9 { top: 34%; left: 76%; } /* বিশ্ব */
+        .label-10 { top: 64%; left: 20%; } /* খেলাধুলা */
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5vw; /* Font size relative to viewport width */
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 10vw; /* Responsive width */
+        }
+
+        .menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-icon,
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .search-icon svg,
+        .menu-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #3a55a0;
+            stroke-width: 2;
+        }
+
+        @media (max-width: 768px) {
+            .label {
+                width: 12%;
+                height: 6%;
+                font-size: 2.5vw;
+            }
+
+            .footer {
+                font-size: 2vw;
+            }
+
+            .logo {
+                width: 15vw;
+            }
+
+            .menu-icon,
+            .search-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .label {
+                width: 15%;
+                height: 8%;
+                font-size: 3vw;
+            }
+
+            .footer {
+                font-size: 2.5vw;
+            }
+
+            .logo {
+                width: 20vw;
+            }
+
+            .menu-icon,
+            .search-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tree">
+            <img src="2.jpg" alt="Logo" class="logo">
+            <div class="menu">
+                <!-- Search Icon -->
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="17" y1="17" x2="22" y2="22"></line>
+                    </svg>
+                </div>
+                <!-- Menu Icon -->
+                <div class="menu-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+            <div class="label label-2">ধর্ম</div>
+            <div class="label label-3">কৃষিমূলক</div>
+            <div class="label label-4">সাহিত্য</div>
+            <div class="label label-5">বিজ্ঞান</div>
+            <div class="label label-6">দর্শন</div>
+            <div class="label label-7">অর্থনীতি</div>
+            <div class="label label-8">রাজনীতি</div>
+            <div class="label label-9">বিশ্ব</div>
+            <div class="label label-10">খেলাধুলা</div>
+        </div>
+
+        <div class="footer">সব স্বত্ব © ২০২৪ জীবনজয়ী</div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.label').forEach(label => {
+            label.addEventListener('click', () => {
+                alert(`You clicked on ${label.textContent}`);
+            });
+        });
+
+        document.querySelector('.search-icon').addEventListener('click', () => {
+            alert('Search functionality coming soon!');
+        });
+    </script>
+</body>
+</html>
